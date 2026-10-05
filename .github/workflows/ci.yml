@@ -43,7 +43,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t infraredCoding/devopsrun:${{ env.SHORT_SHA }} ./src/
+          docker build -t infraredcoding/devopsrun:${{ env.SHORT_SHA }} ./src/
 
       - name: Log in to DockerHub
         run: |
@@ -51,4 +51,4 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker push infraredCoding/devopsrun:${{ env.SHORT_SHA }}
+          docker push infraredcoding/devopsrun:${{ env.SHORT_SHA }}
