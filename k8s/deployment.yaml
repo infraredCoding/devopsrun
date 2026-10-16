@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devopsrun
+  labels:
+    app: devopsrun
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devopsrun
+  template:
+    metadata:
+      labels:
+        app: devopsrun
+    spec:
+      containers:
+        - name: devopsrun
+          image: infraredcoding/devopsrun:9cfb1c9
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi

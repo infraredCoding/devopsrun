@@ -16,6 +16,9 @@ def _fetch_writer_name(book_name):
 
     return writer_name
 
+@app.route('/')
+def index():
+    return "Welcome to the Book Writer App!"
 
 @app.route('/<string:book_name>')
 def get_writer_name(book_name):
