@@ -53,6 +53,14 @@ jobs:
         run: |
           docker push infraredcoding/devopsrun:${{ env.SHORT_SHA }}
 
+      - name: Configure Local Git
+        run: |
+          git config --global user.name "Imran Rahman"
+          git config --global user.email "imranrahman.ix@gmail.com"
+
       - name: Update Kubernetes Deployment
         run: |
           sed "s/IMAGE_TAG/${{ env.SHORT_SHA }}/" k8s/deployment.yaml
+          git add k8s/deployment.yaml
+          git commit -m "Update deployment image to ${{ env.SHORT_SHA }}"
+          git push
