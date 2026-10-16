@@ -52,3 +52,7 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push infraredcoding/devopsrun:${{ env.SHORT_SHA }}
+
+      - name: Update Kubernetes Deployment
+        run: |
+          sed "s/IMAGE_TAG/${{ env.SHORT_SHA }}/" k8s/deployment.yaml

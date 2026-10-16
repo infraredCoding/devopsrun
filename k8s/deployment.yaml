@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: devopsrun
-          image: infraredcoding/devopsrun:9cfb1c9
+          image: infraredcoding/devopsrun:IMAGE_TAG
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
